@@ -1,27 +1,37 @@
-import React from 'react';
-import Navbar from '../components/Navbar';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
+import Navbar from '../components/Navbar';
 import './LoginScreen.css';
 
-const onSubmitHandler = () => {
-  console.log('clicked');
-};
+const onSubmitHandler = () => {};
 
 const LoginScreen = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   return (
     <div className='login-container'>
       <Navbar />
       <div className='login-screen'>
         <h1>Login</h1>
         <div className='form-container'>
-          <form type='submit'>
+          <form onSubmit={onSubmitHandler}>
             <div className='form-item'>
               <label>Email</label>
-              <input type='email' placeholder='Enter Password' />
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type='email'
+                placeholder='Enter Password'
+              />
             </div>
             <div className='form-item'>
               <label>Password</label>
-              <input type='password' placeholder='Enter Password' />
+              <input
+                onChange={(e) => setPassword(e.target.value)}
+                type='password'
+                placeholder='Enter Password'
+              />
             </div>
             <button className='submit-button'>Login</button>
             <p>
