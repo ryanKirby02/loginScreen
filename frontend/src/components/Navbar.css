@@ -2,7 +2,7 @@ nav {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  background-color: #24252a;
+  background-color: #1c0f13;
   display: flex;
   justify-content: space-between;
 }
@@ -17,13 +17,13 @@ a {
   font-family: sans-serif;
   font-weight: 500;
   font-size: 16px;
-  color: #edf0f1;
+  color: #e2e2e2;
   text-decoration: none;
   transition: all 0.3s ease 0s;
 }
 
 a:hover {
-  color: #0088a9;
+  color: #6e7e85;
 }
 
 .nav-links {
@@ -40,7 +40,7 @@ li {
 }
 
 button {
-  background-color: #edf0f1;
+  background-color: #e2e2e2;
   border: none;
   padding: 10px 15px;
   border-radius: 15%;
@@ -49,6 +49,6 @@ button {
 }
 
 button:hover {
-  background-color: #0088a9;
-  color: #edf0f1;
+  background-color: #6e7e85;
+  color: #e2e2e2;
 }
