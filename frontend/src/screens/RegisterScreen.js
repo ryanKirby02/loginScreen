@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../actions/userActions';
 
 import Navbar from '../components/Navbar';
+import Message from '../components/Message';
+
 import './RegisterScreen.css';
 
 const RegisterScreen = ({ location, history }) => {
@@ -32,8 +34,9 @@ const RegisterScreen = ({ location, history }) => {
   return (
     <div className='register-container'>
       <Navbar />
+      {error && <Message type='error'>{error}</Message>}
       <div className='register-screen'>
-        <h1>Register</h1>
+        <h1 className='header'>Register</h1>
         <div className='form-container'>
           <form onSubmit={onSubmitHandler}>
             <div className='form-item'>

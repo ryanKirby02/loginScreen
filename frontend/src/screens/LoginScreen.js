@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../actions/userActions';
 
 import Navbar from '../components/Navbar';
+import Message from '../components/Message';
 import './LoginScreen.css';
 
 const LoginScreen = ({ location, history }) => {
@@ -14,8 +15,10 @@ const LoginScreen = ({ location, history }) => {
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, loggedUser, error } = userLogin;
+  const userRegister = useSelector((state) => state.userRegister);
+  const { success } = userRegister;
 
-  const redirect = location.search ? location.search.split('=')[1] : '/';
+  const redirect = location.search ? location.search.split('=')[1] : '/profile';
 
   useEffect(() => {
     if (loggedUser) {
@@ -31,8 +34,13 @@ const LoginScreen = ({ location, history }) => {
   return (
     <div className='login-container'>
       <Navbar />
+      {error ? (
+        <Message type='error'>{error}</Message>
+      ) : success ? (
+        <Message type='success'>User registered, go ahead a Login.</Message>
+      ) : null}
       <div className='login-screen'>
-        <h1>Login</h1>
+        <h1 className='header'>Login</h1>
         <div className='form-container'>
           <form onSubmit={onSubmitHandler}>
             <div className='form-item'>

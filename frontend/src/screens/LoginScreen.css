@@ -4,9 +4,10 @@
   overflow: hidden;
 }
 
-h1 {
+.header {
   position: absolute;
-  left: 150px;
+  left: 8.5%;
+  top: 13%;
   color: #1c0f13;
 }
 

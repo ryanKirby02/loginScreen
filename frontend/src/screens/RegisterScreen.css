@@ -4,9 +4,8 @@
   overflow: hidden;
 }
 
-h1 {
+.header {
   position: absolute;
-  left: 150px;
   color: #1c0f13;
 }
 
@@ -21,7 +20,7 @@ img {
   box-shadow: 0 4px 5px grey;
   object-fit: cover;
   height: 680px;
-  width: 750px;
+  width: 50%;
 }
 
 form {
@@ -48,12 +47,13 @@ label {
   display: flex;
   flex-direction: column;
   width: 300px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 input {
   height: 30px;
-  border: 3px grey;
+  border: solid 2px lightgrey;
+  border-style: solid;
 }
 
 .submit-button {

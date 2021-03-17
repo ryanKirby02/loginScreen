@@ -1,0 +1,21 @@
+.success {
+  width: 50%;
+  height: 5%;
+  background-color: #e9ffe8;
+  color: #007d32;
+  font-size: 24px;
+  font-weight: 200;
+  position: absolute;
+  margin: 0;
+}
+
+.error {
+  width: 50%;
+  height: 5%;
+  background-color: #ff9e9e;
+  color: #ff4a4a;
+  font-size: 24px;
+  font-weight: 200;
+  position: absolute;
+  margin: 0;
+}
