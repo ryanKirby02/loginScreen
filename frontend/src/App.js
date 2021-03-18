@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 import './App.css';
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     <Router>
       <header className='App-header'>
         <main>
-          <Route path='/' component={LoginScreen} />
+          <Route path='/login' component={LoginScreen} />
+          <Route path='/register' component={RegisterScreen} />
         </main>
       </header>
     </Router>

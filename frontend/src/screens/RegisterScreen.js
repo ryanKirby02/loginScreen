@@ -1,48 +1,53 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { login } from '../actions/userActions';
+import { register } from '../actions/userActions';
 
 import Navbar from '../components/Navbar';
 import Message from '../components/Message';
-import './LoginScreen.css';
 
-const LoginScreen = ({ location, history }) => {
+import './RegisterScreen.css';
+
+const RegisterScreen = ({ location, history }) => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { loading, loggedUser, error } = userLogin;
   const userRegister = useSelector((state) => state.userRegister);
-  const { success } = userRegister;
+  const { loading, success, error } = userRegister;
 
-  const redirect = location.search ? location.search.split('=')[1] : '/profile';
+  const redirect = location.search ? location.search.split('=')[1] : '/login';
 
   useEffect(() => {
-    if (loggedUser) {
+    if (success) {
       history.push(redirect);
     }
   });
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(login(email, password));
+    dispatch(register(name, email, password));
   };
 
   return (
-    <div className='login-container'>
+    <div className='register-container'>
       <Navbar />
-      {error ? (
-        <Message type='error'>{error}</Message>
-      ) : success ? (
-        <Message type='success'>User registered, go ahead a Login.</Message>
-      ) : null}
-      <div className='login-screen'>
-        <h1 className='header'>Login</h1>
+      {error && <Message type='error'>{error}</Message>}
+      <div className='register-screen'>
+        <h1 className='header'>Register</h1>
         <div className='form-container'>
           <form onSubmit={onSubmitHandler}>
+            <div className='form-item'>
+              <label>Name</label>
+              <input
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                type='text'
+                placeholder='Enter Name'
+              />
+            </div>
             <div className='form-item'>
               <label>Email</label>
               <input
@@ -62,10 +67,10 @@ const LoginScreen = ({ location, history }) => {
               />
             </div>
             <button type='submit' className='submit-button'>
-              Login
+              Register
             </button>
             <p>
-              Don't have an account? <a href='/register'>Register Here!</a>
+              Already have an account? <a href='/login'>Login Here!</a>
             </p>
           </form>
         </div>
@@ -75,4 +80,4 @@ const LoginScreen = ({ location, history }) => {
   );
 };
 
-export default LoginScreen;
+export default RegisterScreen;
