@@ -10,8 +10,10 @@ import './RegisterScreen.css';
 
 const RegisterScreen = ({ location, history }) => {
   const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const dispatch = useDispatch();
 
@@ -28,12 +30,17 @@ const RegisterScreen = ({ location, history }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(register(name, email, password));
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match...');
+    } else {
+      dispatch(register(name, email, password));
+    }
   };
 
   return (
     <div className='register-container'>
       <Navbar />
+      {message && <Message type='error'>{message}</Message>}
       {error && <Message type='error'>{error}</Message>}
       <div className='register-screen'>
         <h1 className='header'>Register</h1>
@@ -64,6 +71,15 @@ const RegisterScreen = ({ location, history }) => {
                 value={password}
                 type='password'
                 placeholder='Enter Password'
+              />
+            </div>
+            <div className='form-item'>
+              <label>Comfirm Password</label>
+              <input
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
+                type='password'
+                placeholder='Confirm Password'
               />
             </div>
             <button type='submit' className='submit-button'>
