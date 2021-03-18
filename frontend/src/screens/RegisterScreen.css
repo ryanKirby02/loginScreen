@@ -6,6 +6,8 @@
 
 .header {
   position: absolute;
+  left: 8.5%;
+  top: 13%;
   color: #1c0f13;
 }
 
@@ -40,7 +42,7 @@ form {
 }
 
 label {
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .form-item {
